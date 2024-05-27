@@ -39,9 +39,13 @@ public class ZonaFitApplication implements CommandLineRunner {
 		var salir = false;
 		var consola = new Scanner(System.in);
 		while(!salir){
-			var opcion = mostrarMenu(consola);
-			salir = ejecutarOpciones(consola,opcion);
-			logger.info(nl);
+			try{
+				var opcion = mostrarMenu(consola);
+				salir = ejecutarOpciones(consola,opcion);
+				logger.info(nl);
+			}catch (Exception e){
+				logger.info("Error al digitar opción no reconocida: "+e.getMessage()+nl);
+			}
 		}
 	}
 
@@ -140,9 +144,7 @@ public class ZonaFitApplication implements CommandLineRunner {
    				|------------------------------------------------|"""+nl+nl);
 				salir = true;
 			}
-			default -> {
-				logger.info("| La opción ingresada es invalida: "+opcion+nl);
-			}
+			default -> logger.info("| La opción ingresada no se encuentra en el MENÚ: "+opcion+nl);
 		}
 		return salir;
 	}
