@@ -49,3 +49,13 @@ estandarizar y unificar el uso de Spring Framework.
   - GENERATE
     - Descargará un archivo .zip para posteriormente ser descomprimido
     y puedas inicializarlos en tu IDE de preferencia.
+
+## ARQUITECTURA SPRING
+- [x] PRESENTACIÓN
+  - ***@SpringBoot*** --> Application
+- [x] SERVICIO
+  - ***@Service***
+- [x] DATOS
+  - ***@Repository***
+- [x] ENTIDAD
+  - ***@Entity*** <-----> DB
