@@ -1,5 +1,6 @@
 package com.zona_fit;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import com.zona_fit.gui.ZonaFitForma;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,9 @@ import javax.swing.*;
 @SpringBootApplication
 public class ZonaFitSwing {
     public static void main(String[] args) {
+
+        // Configuramos el modo Oscuro
+        FlatDarculaLaf.setup();
 
         // Creamos una instancia de la fabricá de Spring
         ConfigurableApplicationContext contextoSpring =
