@@ -28,6 +28,7 @@ public class ZonaFitForma extends JFrame{
     private JPanel panelBotones;
     IClienteServicio clienteServicio;
     private DefaultTableModel tablaModeloClientes;
+    private Integer idCliente;
 
     @Autowired
     public ZonaFitForma(IClienteServicio clienteServicio){
@@ -120,8 +121,15 @@ public class ZonaFitForma extends JFrame{
         var reglon = clientesTabla.getSelectedRow();
 
         //Verificar si no se selecciona ni un reglón
-        if(reglon != 1){
-
+        if(reglon != -1){
+            var id = clientesTabla.getModel().getValueAt(reglon,0).toString();
+            this.idCliente = Integer.parseInt(id);
+            var nombre = clientesTabla.getModel().getValueAt(reglon,1).toString();
+            this.nombreTexto.setText(nombre);
+            var apellido = clientesTabla.getModel().getValueAt(reglon,2).toString();
+            this.apellidoTexto.setText(apellido);
+            var menbresia = clientesTabla.getModel().getValueAt(reglon,3).toString();
+            this.menbresiaTexto.setText(menbresia);
         }
 
     }
