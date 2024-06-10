@@ -1,11 +1,16 @@
 package com.zona_fit.gui;
 
+import com.zona_fit.modelo.Cliente;
 import com.zona_fit.servicio.IClienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 //Nos permitirá recuperar las demás instancias al crear objetos en Spring
 @Component
@@ -17,9 +22,9 @@ public class ZonaFitForma extends JFrame{
     private JTextField menbresiaTexto;
     private JPanel panelFormulario;
     private JPanel panelTabla;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+    private JButton guardarButton;
+    private JButton eliminarButton;
+    private JButton limpiarButton;
     private JPanel panelBotones;
     IClienteServicio clienteServicio;
     private DefaultTableModel tablaModeloClientes;
@@ -28,6 +33,16 @@ public class ZonaFitForma extends JFrame{
     public ZonaFitForma(IClienteServicio clienteServicio){
         this.clienteServicio = clienteServicio;
         iniciarForma();
+        guardarButton.addActionListener(e -> guardarCliente());
+        clientesTabla.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                //recuperar información de table
+                cargarClienteSeleccionado();
+            }
+        });
     }
 
     private void iniciarForma(){
@@ -63,5 +78,61 @@ public class ZonaFitForma extends JFrame{
 
             this.tablaModeloClientes.addRow(renglonCliente);
         });
+    }
+
+    private void guardarCliente(){
+        if(nombreTexto.getText().equals("")){
+            mostrarMensaje("Proporciona un mensaje");
+            nombreTexto.requestFocusInWindow();
+            return;
+        }
+        if(apellidoTexto.getText().equals("")){
+            mostrarMensaje("Proporciona un apellido");
+            menbresiaTexto.requestFocusInWindow();
+            return;
+        }
+        if(menbresiaTexto.getText().equals("")){
+            mostrarMensaje("Proporciona una membresía");
+            menbresiaTexto.requestFocusInWindow();
+            return;
+        }
+
+        // Recuperar la información del formulario
+        var nombre = nombreTexto.getText();
+        var apellido = apellidoTexto.getText();
+        var membresia = Integer.parseInt(menbresiaTexto.getText());
+
+        var cliente = new Cliente();
+        cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        cliente.setMembresia(membresia);
+        this.clienteServicio.guardarCliente(cliente); // se guardo datos
+
+        //limpiamos el formulario
+        limpiarFormulario();
+
+        //lista nuevamente la tabla con el nuevo dato
+        listarClientes();
+    }
+
+    private void cargarClienteSeleccionado(){
+        //Recuperamos la información de in reglón de tabla
+        var reglon = clientesTabla.getSelectedRow();
+
+        //Verificar si no se selecciona ni un reglón
+        if(reglon != 1){
+
+        }
+
+    }
+
+    private void mostrarMensaje(String mensaje){
+        JOptionPane.showMessageDialog(this,mensaje);
+    }
+
+    private void limpiarFormulario(){
+        nombreTexto.setText("");
+        apellidoTexto.setText("");
+        menbresiaTexto.setText("");
     }
 }
