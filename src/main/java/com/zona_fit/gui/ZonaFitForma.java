@@ -101,7 +101,7 @@ public class ZonaFitForma extends JFrame{
         }
         if(apellidoTexto.getText().equals("")){
             mostrarMensaje("Proporciona un Apellido");
-            menbresiaTexto.requestFocusInWindow();
+            apellidoTexto.requestFocusInWindow();
             return;
         }
         if(menbresiaTexto.getText().equals("")){
