@@ -66,7 +66,7 @@ una interfaz gráfica en la cual podrá mejorar la iteración con el usuario adm
 - Se reutilizará el esquema trabajado con Spring Boot para optimizar la funcionalidad con 
 la interfaz gráfica.
 - [x] Ejecución de prueba en local
-<div>
+<div align="center">
   <img src="https://github.com/Roman31X/Curso-Java-Spring/blob/main/src/main/resources/archivosExtras/EjecucionSwingSpring.gif">
 </div>
 
