@@ -67,5 +67,48 @@ una interfaz gráfica en la cual podrá mejorar la iteración con el usuario adm
 la interfaz gráfica.
 - [x] Ejecución de prueba en local
 <div>
-  <img src="">
+  <img src="https://github.com/Roman31X/Curso-Java-Spring/blob/main/src/main/resources/archivosExtras/EjecucionSwingSpring.gif">
 </div>
+
+## Prueba de Aplicación Zona Fit en tu local
+- [x] Descarga o clona el repositorio a tu PC
+  - Descargar repositorio ***.zip***
+    - <a href="https://github.com/Roman31X/Curso-Java-Spring/archive/refs/heads/main.zip">Descarga zip</a>
+  - Clonal repositorio con ***Git***
+    ```git
+    git clone "https://github.com/Roman31X/Curso-Java-Spring.git"
+    ```
+
+-[x] Creamos la base de datos en MyQSL WorkBench
+  - Copiamos las líneas de código en un ***Query de MySQL***
+    ```roomsql
+    -- CREAMOS LA BASE DE DATOS
+    CREATE SCHEMA `zona_fit_db` ;
+
+    -- Usamos la Base de datos Creada
+    USE zona_fit_db
+
+    -- CREAMOS LAS TABLAS EN LA BASE DE DATOS
+    CREATE TABLE `zona_fit_db`.`cliente` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `nombre` VARCHAR(45) NULL,
+        `apellido` VARCHAR(45) NULL,
+        `membresia` INT NULL,
+        PRIMARY KEY (`id`),
+    UNIQUE INDEX `membresia_UNIQUE` (`membresia` ASC) VISIBLE);
+    ```
+- [x] Modificación de variables de conexión a tu base de datos local en el archivo ***application.properties***
+  - <a href="https://github.com/Roman31X/Curso-Java-Spring/blob/main/src/main/resources/application.properties">Modificar archivo</a>
+  - Modificar las siguientes variables:
+  ```properties
+  # Conexión MySQL
+  # Modificar el localhost en caso de mantener el estándar de IP
+  # el puerto en caso de manejar otro en tu local
+  spring.datasource.url=jdbc:mysql://localhost:3306/zona_fit_db
+  
+  # Modificar el usuario de tu base de datos esa información está en MySQL WorkBench
+  spring.datasource.username=root
+  
+  # Modificar la contraseña en caso en tu local tengas otra diferente o este vacía 
+  spring.datasource.password=admin
+  ```
