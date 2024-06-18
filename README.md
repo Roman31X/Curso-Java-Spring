@@ -36,7 +36,7 @@ estandarizar y unificar el uso de Spring Framework.
   - Packaging: Jar
   - Java: V - 21
 - [x] Dependencies:
-  - Spring Data JPS [SQL]
+  - Spring Data JPA [SQL]
     - Esta dependencia nos permite establecer una conexión hacia
     la base de datos entre varias tareas más.
   - MySQL Driver [SQL]
