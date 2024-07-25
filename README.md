@@ -61,4 +61,11 @@ estandarizar y unificar el uso de Spring Framework.
   - ***@Entity*** <-----> DB
 
 # Java Swing + Spring Boot
-- 
+- En esta etapa realizaremos la mejora de la Aplicación para Zona Fit GYM se le agregará
+una interfaz gráfica en la cual podrá mejorar la iteración con el usuario administrativo.
+- Se reutilizará el esquema trabajado con Spring Boot para optimizar la funcionalidad con 
+la interfaz gráfica.
+- [x] Ejecución de prueba en local
+<div>
+  <img src="">
+</div>
